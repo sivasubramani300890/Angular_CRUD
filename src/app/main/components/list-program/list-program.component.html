@@ -1,0 +1,64 @@
+<div align="right">
+<nav aria-label="breadcrumb" >
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Login</li>
+    <ng-container *ngIf="newVar1; else loggedOut">
+      <li class="breadcrumb-item active" aria-current="page">Program Details</li>
+      <li class="breadcrumb-item" aria-current="page">EPG Details</li>
+    </ng-container>
+    <ng-template #loggedOut>
+    <li class="breadcrumb-item" aria-current="page">Program Details</li>
+      <li class="breadcrumb-item active" aria-current="page">EPG Details</li>
+  </ng-template>
+  </ol>
+</nav>
+</div>
+<!-- <div align="right">
+<button type="button" class="btn btn-success" (click)="listEPG()">EPG Details</button>
+&emsp;
+<button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+</div> -->
+<div class="col-md-12" align="center">  
+
+  <h2> Program Details</h2>  
+  <div>
+  	
+  </div>
+  <br/>
+  <div align="right">
+  <button class="btn btn-success" (click)="addEmployee()">
+      Add Program
+    </button>
+  </div>
+  <br/>
+  <div class="table-responsive table-container">  
+    <table class="table" width="100%" border="1" cellpadding="10" align="center">  
+      <thead>  
+        <tr>  
+          <th class="text-center">Program Id</th>  
+          <th class="text-center">Program Title </th>  
+          <th class="text-center">Program Description</th>  
+          <th class="text-center">Program Age</th>
+          <th class="text-center">Program Type</th> 
+          <th class="text-center">Action</th>  
+        </tr>  
+      </thead>  
+      <tbody> 
+      <ng-container *ngIf="employees && employees.length > 0">
+        <tr style="background-color: {{colors[++i]}};" *ngFor="let emp of employees;let i= index;">  
+          <td class="hidden" align="center">{{emp.program_id}}</td>  
+          <td align="center">{{emp.program_title}}</td>  
+          <td align="center">{{emp.program_description}}</td>  
+          <td align="center">{{emp.program_age}}</td>  
+          <td align="center">{{emp.program_type}}</td>  
+          <td align="center">  
+            <button (click)="deleteEmp(emp.program_id)" class="btn btn-info"> Delete</button>  
+            <button (click)="editEmp(emp.program_id)" class="btn btn-primary" style="margin-left: 20px;" class="btn btn-info"> Edit</button>  
+          </td>  
+        </tr>  
+      
+    </ng-container>
+      </tbody>  
+    </table>  
+  </div>  
+</div>

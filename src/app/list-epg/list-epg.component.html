@@ -1,0 +1,51 @@
+
+<!-- <div align="right">
+<button type="button" class="btn btn-success" (click)="listProgram()">Program Details</button>
+&emsp;
+<button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+</div> -->
+<div class="col-md-12" align="center">  
+
+  <h2> EPG Details</h2>  
+  <div>
+  	
+  </div>
+  <br/>
+  <div align="right">
+  <button class="btn btn-success" (click)="addEpg()">
+      Add EPG
+    </button>
+  </div>
+  <br/>
+  <div class="table-responsive table-container">  
+    <table class="table" width="100%" border="1" cellpadding="10" align="center">  
+      <thead>  
+        <tr>  
+          <th class="text-center">Channel No</th>  
+          <th class="text-center">Channel Name </th> 
+          <th class="text-center">Program ID</th>   
+          <th class="text-center">EPG Date</th> 
+          <th class="text-center">EPG Start Time</th>
+          <th class="text-center">EPG End Time</th> 
+          <th class="text-center">Action</th>  
+        </tr>  
+      </thead>  
+      <tbody> 
+      <ng-container *ngIf="employees && employees.length > 0">
+        <tr *ngFor="let emp of employees">  
+          <td class="hidden" align="center">{{emp.id}}</td>  
+          <td align="center">{{emp.channel_name}}</td>  
+          <td align="center">{{emp.program_id}}</td>  
+          <td align="center">{{emp.epg_date | date:'dd.MM.Y'}}</td>  
+          <td align="center">{{emp.epg_start_time}}</td> 
+          <td align="center">{{emp.epg_end_time}}</td> 
+          <td align="center">  
+            <button (click)="deleteEmp(emp.id)" class="btn btn-info"> Delete</button>  
+            <button (click)="editEmp(emp.id)" class="btn btn-primary" style="margin-left: 20px;" class="btn btn-info"> Edit</button>  
+          </td>  
+        </tr>  
+    </ng-container>
+      </tbody>  
+    </table>  
+  </div>  
+</div>

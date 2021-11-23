@@ -1,0 +1,47 @@
+<div class="col-md-6" align="center">  
+  <h2 class="text-center">{{!editEmpId ? 'Add' : 'Edit'}} Channel</h2>  
+  <form [formGroup]="addForm" novalidate class="form">  
+    <table cellpadding="15"><tr><td>
+    
+      <label for="title">Channel Name:<font color="red" size="4"><sup>*</sup></font></label> </td> <td> : </td><td>
+      <input formControlName="channel_name" placeholder="Channel Name" name="title" class="form-control" id="cname">  
+     </td>
+   </tr><tr>
+    <td>
+     
+      <label for="empName">Program ID:<font color="red" size="4"><sup>*</sup></font></label>  </td><td> : </td><td>
+      	<select  class="form-control" formControlName="program_id" id="program_id" data-live-search="true">
+      		<option *ngFor="let emp of employees; let i = index" value={{emp.program_id}} title="{{emp.program_title}}" [attr.selected]='i>0 ? "selected" : null'> {{emp.program_id}}  </option> 
+   		</select>
+        
+     </td>
+    </tr><tr>
+    <td> 
+    
+      <label for="empName">EPG Date:<font color="red" size="4"><sup>*</sup></font></label>  </td><td> : </td><td>
+      <input formControlName="epg_date" type="Date" placeholder="EPG Date" name="description" class="form-control" id="epgdate">  
+     </td>
+    </tr><tr>
+    <td>
+    
+      <label for="empName">EPG Start Time:</label> </td> <td> : </td><td>
+      <input formControlName="epg_start_time" type="Time" placeholder="Start Time" name="type" class="form-control" id="stime">  
+   </td>
+   
+    </tr><tr>
+    <td>
+    
+      <label for="empName">EPG End Time:</label> </td> <td> : </td><td>
+      <input formControlName="epg_end_time" placeholder="End Time" type="Time" name="type" class="form-control" id="etime">  
+   </td>
+   
+    </tr></table>
+     
+    <button style="margin-right:20px" class="btn btn-success" *ngIf="!editEmpId" [disabled]='addForm.invalid' (click)="onSubmit()">Save</button>  
+    <button style="margin-right:20px" class="btn btn-success" *ngIf="editEmpId" [disabled]='addForm.invalid' (click)="onUpdate()">Update</button>  
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+     <button class="btn btn-success" (click)="backClicked()">Cancel</button>  
+  
+    <!-- <p>Form value: {{ this.addForm.value | json }}</p>   -->
+  </form>  
+</div>
